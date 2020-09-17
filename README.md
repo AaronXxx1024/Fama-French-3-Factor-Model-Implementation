@@ -4,9 +4,9 @@
 A realization of classic Fama French Three Factor Model for the purpose of empirical study.
 
 ## Workflow
-1) Get data (ticker pool, S&P500, risk free rate, close price, market cap and book-to-market ratio) from SQL database.
-2) Organize data to the form we want: {trading_day:df_data}
-3) Calculate factor in two different ways:
+1. Get data (ticker pool, S&P500, risk free rate, close price, market cap and book-to-market ratio) from SQL database.
+2. Organize data to the form we want: {trading_day:df_data}
+3. Calculate factor in two different ways:
     i. Split mc to 'Big'(50%) and 'Small'(50%), then use market cap weighted average return ('Small'-'Big') to get 'SMB'
     Split bm to 'High'(30%), 'Medium'(40%) and 'L'(30%), then use market cap weighted average return ('High'-'Low') to
     get 'HML'.
@@ -19,12 +19,12 @@ A realization of classic Fama French Three Factor Model for the purpose of empir
     and use market cap weighted average return
     <a href="https://www.codecogs.com/eqnedit.php?latex=(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" title="(BH + SH) / 2 - (BL + SL) / 2" /></a>
     to get 'HML'.
-4) Save all factor data in a df with columns ['Rm', 'SMB', 'HML'].
+4. Save all factor data in a df with columns ['Rm', 'SMB', 'HML'].
    where 'Rm' is the log return of S&P500 minus corresponding daily risk free rate.
-5) Regress all tickers' log return on factor data, get interception as 'alpha' and its p-value. Save these two data to
+5. Regress all tickers' log return on factor data, get interception as 'alpha' and its p-value. Save these two data to
    a dict called 'alpha' with form: {trading_day:df_data([alpha, p-value])}.
-6) Input all necessary data to a Class to get an 'Alpha' object.
-7) Run backtest() method in Alpha object. When backtesting is done, program will plot portfolio cumulative return vs.
+6. Input all necessary data to a Class to get an 'Alpha' object.
+7. Run backtest() method in Alpha object. When backtesting is done, program will plot portfolio cumulative return vs.
    market cumulative return and print the portfolio result in a table form with columns:
    [Portfolio Return | Sharpe | Volatility |  IR  | Max Drawdown].
 
