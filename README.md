@@ -6,19 +6,17 @@ A realization of classic Fama French Three Factor Model for the purpose of empir
 ## Workflow
 1. Get data (ticker pool, S&P500, risk free rate, close price, market cap and book-to-market ratio) from SQL database.
 2. Organize data to the form we want: {trading_day:df_data}
-3. Calculate factor in two different ways:
-    i. Split mc to 'Big'(50%) and 'Small'(50%), then use market cap weighted average return ('Small'-'Big') to get 'SMB'
-    Split bm to 'High'(30%), 'Medium'(40%) and 'L'(30%), then use market cap weighted average return ('High'-'Low') to
-    get 'HML'.
-    ii. The difference is after initial separation, we do one more step. Mark tickers based on intersection, e.g. if a
-    ticker is marked as 'Big' and 'High' in the same time, then we mark it as 'B/H'. Therefore, we'll have total 6
-    different groups: B/H, B/M, B/L, S/H, S/M and S/L. 
-    Finally, use market cap weighted average return:
-    <a href="https://www.codecogs.com/eqnedit.php?latex=(SH&space;&plus;&space;SM&space;&plus;&space;SL)&space;/&space;3&space;-&space;(BH&space;&plus;&space;BM&space;&plus;&space;BL)&space;/&space;3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(SH&space;&plus;&space;SM&space;&plus;&space;SL)&space;/&space;3&space;-&space;(BH&space;&plus;&space;BM&space;&plus;&space;BL)&space;/&space;3" title="(SH + SM + SL) / 3 - (BH + BM + BL) / 3" /></a>
-    to get 'SMB' 
-    and use market cap weighted average return
-    <a href="https://www.codecogs.com/eqnedit.php?latex=(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" title="(BH + SH) / 2 - (BL + SL) / 2" /></a>
-    to get 'HML'.
+3. Calculate factor in two different ways:  
+> * Split mc to 'Big'(50%) and 'Small'(50%), then use market cap weighted average return ('Small'-'Big') to get 'SMB' Split bm to 'High'(30%), 'Medium'(40%) and 'L'(30%), then use market cap weighted average return ('High'-'Low') to get 'HML'.  
+
+> * The difference is after initial separation, we do one more step. Mark tickers based on intersection, e.g. if aticker is marked as 'Big' and 'High' in the same time, then we mark it as 'B/H'. Therefore, we'll have total 6 different groups: B/H, B/M, B/L, S/H, S/M and S/L.  
+
+> * Finally, use market cap weighted average return to get 'SMB' and 'HML':  
+
+><a href="https://www.codecogs.com/eqnedit.php?latex=SMB&space;=&space;(SH&space;&plus;&space;SM&space;&plus;&space;SL)&space;/&space;3&space;-&space;(BH&space;&plus;&space;BM&space;&plus;&space;BL)&space;/&space;3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?SMB&space;=&space;(SH&space;&plus;&space;SM&space;&plus;&space;SL)&space;/&space;3&space;-&space;(BH&space;&plus;&space;BM&space;&plus;&space;BL)&space;/&space;3" title="SMB = (SH + SM + SL) / 3 - (BH + BM + BL) / 3" /></a> 
+
+><a href="https://www.codecogs.com/eqnedit.php?latex=HML&space;=&space;(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?HML&space;=&space;(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" title="HML = (BH + SH) / 2 - (BL + SL) / 2" /></a>
+
 4. Save all factor data in a df with columns ['Rm', 'SMB', 'HML'].
    where 'Rm' is the log return of S&P500 minus corresponding daily risk free rate.
 5. Regress all tickers' log return on factor data, get interception as 'alpha' and its p-value. Save these two data to
