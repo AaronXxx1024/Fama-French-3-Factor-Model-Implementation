@@ -3,6 +3,9 @@
 ## About
 A realization of classic Fama French Three Factor Model for the purpose of empirical study.
 
+## Data
+[SQL Data](https://drive.google.com/file/d/12UDgK708uDZOyi2JbFBr0L6IqghwqBBX/view?usp=sharing)  
+
 ## Workflow
 1. Get data (ticker pool, S&P500, risk free rate, close price, market cap and book-to-market ratio) from SQL database.
 2. Organize data to the form we want: {trading_day:df_data}
