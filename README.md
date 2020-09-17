@@ -14,10 +14,10 @@ A realization of classic Fama French Three Factor Model for the purpose of empir
     ticker is marked as 'Big' and 'High' in the same time, then we mark it as 'B/H'. Therefore, we'll have total 6
     different groups: B/H, B/M, B/L, S/H, S/M and S/L. 
     Finally, use market cap weighted average return:
-    <a href="https://www.codecogs.com/eqnedit.php?latex=((S/H&space;&plus;&space;S/M&space;&plus;&space;S/L)&space;/&space;3&space;-&space;(B/H&space;&plus;&space;B/M&space;&plus;&space;B/L)&space;/&space;3)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?((S/H&space;&plus;&space;S/M&space;&plus;&space;S/L)&space;/&space;3&space;-&space;(B/H&space;&plus;&space;B/M&space;&plus;&space;B/L)&space;/&space;3)" title="((S/H + S/M + S/L) / 3 - (B/H + B/M + B/L) / 3)" /></a> 
+    <a href="https://www.codecogs.com/eqnedit.php?latex=(SH&space;&plus;&space;SM&space;&plus;&space;SL)&space;/&space;3&space;-&space;(BH&space;&plus;&space;BM&space;&plus;&space;BL)&space;/&space;3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(SH&space;&plus;&space;SM&space;&plus;&space;SL)&space;/&space;3&space;-&space;(BH&space;&plus;&space;BM&space;&plus;&space;BL)&space;/&space;3" title="(SH + SM + SL) / 3 - (BH + BM + BL) / 3" /></a>
     to get 'SMB' 
     and use market cap weighted average return
-    <a href="https://www.codecogs.com/eqnedit.php?latex=((B/H&space;&plus;&space;S/H)&space;/&space;2&space;-&space;(B/L&space;&plus;&space;S/l)&space;/&space;2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?((B/H&space;&plus;&space;S/H)&space;/&space;2&space;-&space;(B/L&space;&plus;&space;S/l)&space;/&space;2)" title="((B/H + S/H) / 2 - (B/L + S/L) / 2)" /></a>
+    <a href="https://www.codecogs.com/eqnedit.php?latex=(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(BH&space;&plus;&space;SH)&space;/&space;2&space;-&space;(BL&space;&plus;&space;SL)&space;/&space;2" title="(BH + SH) / 2 - (BL + SL) / 2" /></a>
     to get 'HML'.
 4) Save all factor data in a df with columns ['Rm', 'SMB', 'HML'].
    where 'Rm' is the log return of S&P500 minus corresponding daily risk free rate.
