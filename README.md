@@ -27,13 +27,15 @@ A realization of classic Fama French Three Factor Model for the purpose of empir
 7. Run backtest() method in Alpha object. When backtesting is done, program will plot portfolio cumulative return vs.
    market cumulative return and print the portfolio result in a table form with columns:
    [Portfolio Return | Sharpe | Volatility |  IR  | Max Drawdown].
-
+   
+* The detailed info about trading rules and Alpha object could be found in portfolio.py
+   
    ### e.g Top 25 alpha: Portfolio results
    
    | Portfolio Return | Sharpe | Volatility |  IR  | Max Drawdown |
    |  :----:  | :----:  | :----:  | :----:  | :----:  |    
    | 38.95% | 0.68 | 0.17 |  0.19  | 21.4% |
     
-   ![image](https://github.com/AaronXxx1024/Fama-French-3-Factor-Model-Implementation/blob/master/Top%2025%20alpha.png)
+![image](https://github.com/AaronXxx1024/Fama-French-3-Factor-Model-Implementation/blob/master/Top%2025%20alpha.png)
    
-   The detailed info about trading rules and Alpha object could be found in portfolio.py
+   
