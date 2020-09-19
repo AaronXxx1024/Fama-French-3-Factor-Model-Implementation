@@ -4,6 +4,8 @@
 A realization of classic Fama French Three Factor Model for the purpose of empirical study.
 
 ## Data
+S&P500 constituent stocks from 2015-06-30 to 2019-06-30.
+Dataset includes their daily colse price, outstanding share, market cap and book-to-market ratio.
 [SQL Data](https://drive.google.com/file/d/12UDgK708uDZOyi2JbFBr0L6IqghwqBBX/view?usp=sharing)  
 
 ## Workflow
